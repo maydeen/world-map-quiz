@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="theme-color" content="#bfe3f5">
+  <title>세계 지도 퀴즈</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div id="app">
+    <!-- 게임 상단 바 -->
+    <header id="topbar" hidden>
+      <button id="btn-home" class="icon-btn" aria-label="처음으로">🏠</button>
+      <div id="question">
+        <div id="q-sub"></div>
+        <div id="q-main"></div>
+      </div>
+      <div id="status">
+        <div id="q-progress"></div>
+        <div id="q-score"></div>
+      </div>
+      <button id="btn-speak" class="icon-btn" aria-label="다시 듣기">🔊</button>
+    </header>
+
+    <!-- 지도 -->
+    <main id="map-wrap">
+      <svg id="map"></svg>
+      <div id="map-controls">
+        <button id="zoom-in" class="icon-btn" aria-label="확대">＋</button>
+        <button id="zoom-out" class="icon-btn" aria-label="축소">－</button>
+        <button id="zoom-reset" class="icon-btn" aria-label="처음 위치">⟲</button>
+      </div>
+      <div id="loading">지도를 불러오는 중…</div>
+    </main>
+
+    <!-- 하단 피드백 / 보기 -->
+    <footer id="bottom" hidden>
+      <div id="choices"></div>
+      <div id="feedback">
+        <div id="fb-text"></div>
+        <button id="btn-next" class="primary" hidden>다음 ▶</button>
+      </div>
+    </footer>
+
+    <!-- 시작 화면 -->
+    <section id="home" class="overlay">
+      <div class="panel">
+        <h1>🗺️ 세계 지도 퀴즈</h1>
+
+        <h2>무엇을 할까요?</h2>
+        <div id="mode-list" class="cards"></div>
+
+        <h2>어느 지역?</h2>
+        <div id="region-list" class="chips"></div>
+
+        <h2>난이도</h2>
+        <div id="level-list" class="chips"></div>
+
+        <div class="home-footer">
+          <label class="toggle"><input type="checkbox" id="opt-voice" checked> 🔊 소리 내어 읽기</label>
+          <span id="pool-info"></span>
+        </div>
+        <button id="btn-start" class="primary big">시작하기!</button>
+        <div id="best-info"></div>
+      </div>
+    </section>
+
+    <!-- 결과 화면 -->
+    <section id="result" class="overlay" hidden>
+      <div class="panel">
+        <div id="res-stars"></div>
+        <div id="res-score"></div>
+        <div id="res-msg"></div>
+        <div id="res-missed"></div>
+        <div class="res-buttons">
+          <button id="btn-retry-missed" class="primary">틀린 것만 다시</button>
+          <button id="btn-again" class="primary">한 판 더</button>
+          <button id="btn-to-home">처음으로</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <script src="vendor/d3.min.js"></script>
+  <script src="vendor/topojson-client.min.js"></script>
+  <script src="vendor/countries-50m.js"></script>
+  <script src="data.js"></script>
+  <script src="game.js"></script>
+</body>
+</html>
